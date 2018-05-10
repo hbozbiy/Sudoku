@@ -2,7 +2,6 @@ import data.Cell;
 import data.Grid;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -13,12 +12,14 @@ public class RowUtils implements RowIsoUtil , RowSolvingUtil {
 	public static void main(String[] args) {
 		Grid grid1 = new Grid(9);
 		RowUtils x = new RowUtils();
-		int[] rowValues={6,2,-1,4,7,5,1,8,9};
+		int[] rowValues={6,2,3,4,7,5,-1,8,9};
 		grid1.setRowValues(1, rowValues);
-		
-		
+		Cell y[]=x.getRowWhiteSpaces(grid1, grid1.getCell(1, 1));
+		for(int i =0;i<y.length;i++) System.out.println(y[i].getcIndex());
 		System.out.println(x.isFullHouseRow(grid1, grid1.getCell(1, 1)));
 		System.out.println(x.hasFullHouseRow(grid1));
+		System.out.println(x.getRowNakedSingleCell(grid1,  grid1.getCell(1, 1)).getcIndex());
+		
 	}
 
 	@Override
@@ -107,10 +108,8 @@ public class RowUtils implements RowIsoUtil , RowSolvingUtil {
 				
 			}
 		}
-		
 		Cell[] leereCellArray = new Cell[leereCellen.size()];
 		leereCellArray= leereCellen.toArray(leereCellArray);
-		
 		return leereCellArray;
 	}
 
@@ -157,13 +156,23 @@ public class RowUtils implements RowIsoUtil , RowSolvingUtil {
 	@Override
 	public boolean isRowWithNakedSingleCell(Grid grid, Cell anchor) {
 		// TODO Auto-generated method stub
-		return false;
+	
+		
+		return isFullHouseRow(grid, anchor);
 	}
 
 	@Override
 	public Cell getRowNakedSingleCell(Grid grid, Cell anchor) {
 		// TODO Auto-generated method stub
-		return null;
+		Cell aCellList[] = null;
+		if(isRowWithNakedSingleCell(grid, anchor))
+		{
+			aCellList=getRowWhiteSpaces(grid,anchor);
+			Cell temp =aCellList[0];
+			return temp;
+		}
+		else return null;
+
 	}
 
 	@Override
