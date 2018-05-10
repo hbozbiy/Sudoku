@@ -155,10 +155,10 @@ public class RowUtils implements RowIsoUtil , RowSolvingUtil {
 
 	@Override
 	public boolean isRowWithNakedSingleCell(Grid grid, Cell anchor) {
-		// TODO Auto-generated method stub
+		
 	
 		
-		return isFullHouseRow(grid, anchor);
+		return false;
 	}
 
 	@Override
@@ -177,7 +177,92 @@ public class RowUtils implements RowIsoUtil , RowSolvingUtil {
 
 	@Override
 	public boolean isRowWithHiddenSingleCell(Grid grid, Cell anchor) {
-		// TODO Auto-generated method stub
+		int blockArray[]= {1,2,3,4,5,6,7,8,9};
+		int spalteArray[]= {1,2,3,4,5,6,7,8,9};
+		int zeileArray[]= {1,2,3,4,5,6,7,8,9};
+		int [] rowValues=grid.getRowValues(anchor.getrIndex());
+		int [] colValuses=grid.getColValues(anchor.getcIndex());
+		
+		List<Integer> mylist = new ArrayList<Integer>();
+		List<Integer> mylist2 = new ArrayList<Integer>();
+		List<Integer> mylist3 = new ArrayList<Integer>();
+		
+		List<Integer> mylist4 = new ArrayList<Integer>();
+		List<Integer> mylist5 = new ArrayList<Integer>();
+		List<Integer> mylist6 = new ArrayList<Integer>();
+		
+		List<Integer> mylist7 = new ArrayList<Integer>();
+		List<Integer> mylist8 = new ArrayList<Integer>();
+		List<Integer> mylist9 = new ArrayList<Integer>();
+		for (int zeile=1; zeile<=3;zeile++)
+		{
+			for(int spalte=1; spalte<=3;spalte++)
+			{
+				mylist.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=4; spalte<=6;spalte++)
+			{
+				mylist2.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=7; spalte<=9;spalte++)
+			{
+				mylist3.add(grid.getValue(zeile, spalte));
+			}
+		}
+		
+		for (int zeile=4; zeile<=6;zeile++)
+		{
+			for(int spalte=1; spalte<=3;spalte++)
+			{
+				mylist4.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=4; spalte<=6;spalte++)
+			{
+				mylist5.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=7; spalte<=9;spalte++)
+			{
+				mylist6.add(grid.getValue(zeile, spalte));
+			}
+		}
+		
+		for (int zeile=7; zeile<=9;zeile++)
+		{
+			for(int spalte=1; spalte<=3;spalte++)
+			{
+				mylist7.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=4; spalte<=6;spalte++)
+			{
+				mylist8.add(grid.getValue(zeile, spalte));
+			}
+			
+			for(int spalte=7; spalte<=9;spalte++)
+			{
+				mylist9.add(grid.getValue(zeile, spalte));
+			}
+		}
+		int blockValue[];
+		int blockValue2[];
+		int blockValue3[];
+		int blockValue4[];
+		int blockValue5[];
+		int blockValue6[];
+		int blockValue7[];
+		int blockValue8[];
+		int blockValue9[];
+		for(int i =0; i<=9; i++)
+		{
+			blockArray[i]=mylist.get(i);
+		}
+		
+		
+		
 		return false;
 	}
 
